@@ -1,0 +1,128 @@
+body {
+    width: 100%;
+    padding: 30px;
+    font-family: "Inter", sans-serif;
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 400;
+    background: #fff;
+}
+
+button {
+    height: 58px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.5;
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 700;
+}
+
+ol {
+    list-style: decimal;
+    list-style-position: inside;
+}
+
+.label {
+    font-weight: 700;
+}
+
+.rub:after {
+    content: " руб.";
+}
+
+.stats__limit {
+    cursor: pointer;
+}
+
+.expenses {
+    margin-top: 28px;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 28px;
+    row-gap: 43px;
+}
+
+.expensesInput {
+    width: 484px;
+}
+
+.categorySelect {
+    margin-top: 18px;
+    width: 484px;
+    height: 58px;
+    padding-left: 22px;
+    font-size: inherit;
+    border: 1px solid #000;
+}
+
+.moneyInput {
+    display: flex;
+    align-items: center;
+    padding: 10px 17px 9px 22px;
+    border: 1px solid #000;
+}
+
+.moneyInput__input {
+    width: 100%;
+    border: none;
+    font-size: inherit;
+}
+
+.moneyInput__currency {
+    padding-left: 20px;
+}
+
+.moneyInput__input:focus-visible {
+    outline: none;
+}
+
+.addButton {
+    display: block;
+    padding: 10px 110px;
+    font-size: inherit;
+    color: #fff;
+    background-color: #0094FF;
+    border: none;
+}
+
+.stats {
+    width: 484px;
+}
+
+.stats__total {
+    margin-top: 13px
+}
+
+.stats__status {
+    margin-top: 35px;
+}
+
+.stats__statusText_positive {
+    color: #039000;
+}
+
+.stats__statusText_negative {
+    color: #FF0000;
+}
+
+.history__list {
+    margin-top: 21px;
+}
+.clearButton {
+    width: 484px;
+    height: 58px;
+    font-size: 32px;
+    color: #FFFFFF;
+    background-color: #FF0000;
+    border: none;
+    cursor: pointer;
+}
