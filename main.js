@@ -1,5 +1,7 @@
 const STATUS_IN_LIMIT = "все хорошо";
 const STATUS_OUT_OF_LIMIT = "все плохо";
+const STORAGE_LABEL_LIMIT = "limit";
+const STORAGE_LABEL_EXPENSES = "expenses";
 
 const inputNode = document.getElementById("expenseInput");
 const categorySelectNode = document.getElementById("categorySelect");
@@ -13,19 +15,26 @@ const changeLimitBtn = document.getElementById("changeLimitBtn");
 const limitNode = document.getElementById("limitValue");
 let limit = parseInt(limitNode.innerText);
 
-initLimit();
-
 function initLimit() {
-    const limitFromStorage = parseInt(localStorage.getItem("limit"));
+    const limitFromStorage = parseInt(localStorage.getItem(STORAGE_LABEL_LIMIT));
     if (!limitFromStorage) {
         return;
     }
     limitNode.innerText = limitFromStorage;
+    limit = parseInt(limitNode.innerText);
 }
 
+initLimit();
 
 
+const expensesFromStorageString = localStorage.getItem(STORAGE_LABEL_EXPENSES);
+const expensesFromStorage = JSON.parse(expensesFromStorageString);
 let expenses = [];
+if (Array.isArray(expensesFromStorage)) {
+    expenses = expensesFromStorage;
+}
+
+render();
 
 function getTotal() {
     let sum = 0;
@@ -76,6 +85,11 @@ const clearInput = (input) => {
     input.value = "";
 };
 
+function saveExpensesToStorage() {
+    const expensesString = JSON.stringify(expenses);
+    localStorage.setItem(STORAGE_LABEL_EXPENSES, expensesString);
+}
+
 function addButtonHandler() {
     const currentAmount = getExpenseFromUser();
     if (!currentAmount) {
@@ -93,13 +107,17 @@ function addButtonHandler() {
     console.log(newExpense);
 
     expenses.push(newExpense);
+    saveExpensesToStorage();
+
     render();
     clearInput(inputNode);
 }
 
+
+
 function clearButtonHandler() {
     expenses = [];
-    render ();
+    render();
 }
 
 function changeLimitHandler() {
@@ -113,9 +131,9 @@ function changeLimitHandler() {
 
     limitNode.innerText = newLimitValue;
     limit = newLimitValue;
-    localStorage.setItem('limit', newLimitValue);
+    localStorage.setItem(STORAGE_LABEL_LIMIT, newLimitValue);
 
-    render;
+    render();
 }
 
 addButtonNode.addEventListener("click", addButtonHandler);
