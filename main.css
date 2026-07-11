@@ -1,11 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    width: 100%;
+    margin: 0 auto;
+    height: 100%;
     padding: 30px;
     font-family: "Inter", sans-serif;
     font-size: 32px;
     line-height: 39px;
     font-weight: 400;
     background: #fff;
+}
+
+.main {
+    margin: 0 auto;
+    width: 1400px;
 }
 
 button {
@@ -125,4 +135,16 @@ ol {
     background-color: #FF0000;
     border: none;
     cursor: pointer;
+}
+
+@media (max-width: 1199px) {
+    .main {
+        width: 960px;
+    }
+}
+
+@media (max-width: 767px) {
+    .main {
+        width: 375px;
+    }
 }
