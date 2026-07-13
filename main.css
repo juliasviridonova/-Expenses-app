@@ -137,14 +137,110 @@ ol {
     cursor: pointer;
 }
 
-@media (max-width: 1199px) {
-    .main {
-        width: 960px;
+@media (min-width: 768px) and (max-width: 1199px) {
+    body {
+        padding: 20px;
     }
+
+    h1 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+  /* Главная сетка: делаем 2 колонки для основных блоков */
+   .expenses {
+        flex-direction: column;
+        column-gap: 15px;
+        row-gap: 20px;
+    }
+
+  /* Расставляем элементы по колонкам через order и ширину */
+  
+ .expensesInput,
+  .categorySelect,
+  .stats,
+  .addButton,
+  .clearButton {
+        width: 100%;
+        max-width: none;
+    }
+
+    .categorySelect {
+        margin-top: 15px;       /* чуть меньше отступ на планшете */
+  
+    }
+
+  /* Статистика (справа) */
+    .stats {
+        width: 100%;
+ 
+    }
+
+  /* История и кнопка сброса — под ними, на всю ширину */
+    .history,
+    .clearButton {
+        width: 100%;
+    }
+
+  .addButton {
+
+    padding: 0 20px;
+  }
+
+  .clearButton {
+    height: 54px;
+    font-size: 18px;
+  }
+
+  /* Центрируем статусы, чтобы смотрелось аккуратнее в узкой колонке */
+  .stats__limit,
+  .stats__total,
+  .stats__status {
+    text-align: center;       
+  }
 }
 
+
 @media (max-width: 767px) {
-    .main {
-        width: 375px;
+  body {
+     padding: 10px;
+    }
+
+  h1 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+  /* На мобильном .expenses будет в одну колонку */
+  .expenses {
+        flex-direction: column;
+        column-gap: 15px;
+        row-gap: 20px;
+    }
+
+  /* Поля и кнопки на всю доступную ширину */
+  .expensesInput,
+  .categorySelect,
+  .stats,
+  .addButton,
+  .clearButton {
+        width: 100%;
+        max-width: none;
+    }
+
+  .moneyInput {
+        padding: 8px 12px;
+    }
+
+  .addButton,
+  .clearButton {
+        height: 50px;
+        font-size: 16px;
+    }
+
+  .stats__limit,
+  .stats__total,
+  .stats__status {
+        text-align: center;      /* на мобильном удобно центрировать статусы */
     }
 }
