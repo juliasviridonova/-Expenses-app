@@ -161,7 +161,7 @@ ol {
   .stats,
   .addButton,
   .clearButton {
-        width: 100%;
+        width: 1000px;
         max-width: none;
     }
 
@@ -172,14 +172,14 @@ ol {
 
   /* Статистика (справа) */
     .stats {
-        width: 100%;
+        width: 1000px;
  
     }
 
   /* История и кнопка сброса — под ними, на всю ширину */
     .history,
     .clearButton {
-        width: 100%;
+        width: 1000px;
     }
 
   .addButton {
