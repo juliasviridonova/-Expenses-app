@@ -41,3 +41,13 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+.categorySelect {
+  /* Убираем синюю обводку, которая появляется при фокусе на iPhone */
+  -webkit-tap-highlight-color: transparent;
+  
+  /* Самое важное: сбрасываем нативные стили iOS для select */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
