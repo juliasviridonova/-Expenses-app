@@ -16,6 +16,7 @@ body {
 .main {
     margin: 0 auto;
     width: 1400px;
+    
 }
 
 button {
@@ -72,6 +73,7 @@ ol {
     padding-left: 22px;
     font-size: inherit;
     border: 1px solid #000;
+    border-radius: 25px;
 }
 
 .moneyInput {
@@ -79,6 +81,7 @@ ol {
     align-items: center;
     padding: 10px 17px 9px 22px;
     border: 1px solid #000;
+    border-radius: 25px;
 }
 
 .moneyInput__input {
@@ -100,8 +103,9 @@ ol {
     padding: 10px 110px;
     font-size: inherit;
     color: #fff;
-    background-color: #0094FF;
+    background-color: #039000;
     border: none;
+    border-radius: 25px;
 }
 
 .stats {
@@ -135,6 +139,7 @@ ol {
     background-color: #FF0000;
     border: none;
     cursor: pointer;
+    border-radius: 25px;
 }
 
 @media (max-width: 1199px) {
