@@ -3,8 +3,8 @@
 }
 
 body {
-    margin: 0 auto;
-    height: 100%;
+    margin: 0;
+    min-height: 100vh;
     padding: 30px;
     font-family: "Inter", sans-serif;
     font-size: 32px;
@@ -15,14 +15,17 @@ body {
 
 .main {
     margin: 0 auto;
-    width: 1400px;
-    
+    /* Вместо жесткой ширины используем max-width. 
+       На больших экранах будет 1400px, на маленьких — вся доступная ширина */
+    max-width: 1400px; 
+    width: 100%;
 }
 
 button {
     height: 58px;
     font-family: inherit;
     cursor: pointer;
+    border: none;
 }
 
 button:hover {
@@ -33,6 +36,7 @@ h1 {
     font-size: 32px;
     line-height: 39px;
     font-weight: 700;
+    text-align: center; /* Заголовок тоже лучше центрировать */
 }
 
 ol {
@@ -54,7 +58,7 @@ ol {
 
 .expenses {
     margin-top: 28px;
-    width: 1000px;
+    /* Убрали width: 1000px. Теперь это флекс-контейнер */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -62,18 +66,22 @@ ol {
     row-gap: 43px;
 }
 
+/* БЛОКИ ВВОДА */
 .expensesInput {
-    width: 484px;
+    /* Было 484px. Теперь занимаем половину места с учетом отступов */
+    flex: 1 1 484px; 
+    min-width: 280px; /* Минимальная ширина, чтобы не сплющилось на очень узких экранах */
 }
 
 .categorySelect {
     margin-top: 18px;
-    width: 484px;
+    width: 100%; /* Растягиваем на всю ширину родителя */
     height: 58px;
     padding-left: 22px;
     font-size: inherit;
     border: 1px solid #000;
     border-radius: 25px;
+    appearance: none; /* Убирает стандартные стрелочки браузера для красоты */
 }
 
 .moneyInput {
@@ -82,38 +90,38 @@ ol {
     padding: 10px 17px 9px 22px;
     border: 1px solid #000;
     border-radius: 25px;
+    width: 100%;
 }
 
 .moneyInput__input {
     width: 100%;
     border: none;
     font-size: inherit;
-}
-
-.moneyInput__currency {
-    padding-left: 20px;
-}
-
-.moneyInput__input:focus-visible {
     outline: none;
 }
 
 .addButton {
     display: block;
-    padding: 10px 110px;
+    /* Убрали фиксированный padding-left/right, чтобы кнопка могла сжиматься */
+    padding: 10px 40px; 
     font-size: inherit;
     color: #fff;
     background-color: #039000;
-    border: none;
     border-radius: 25px;
+    width: 100%; /* Кнопка на всю ширину блока */
+    max-width: 484px; /* Но не шире, чем было задумано для десктопа */
 }
 
+/* БЛОКИ СТАТИСТИКИ */
 .stats {
-    width: 484px;
+    /* Было 484px. Теперь тоже флекс-элемент */
+    flex: 1 1 484px;
+    min-width: 280px;
+    width: 100%;
 }
 
 .stats__total {
-    margin-top: 13px
+    margin-top: 13px;
 }
 
 .stats__status {
@@ -131,16 +139,20 @@ ol {
 .history__list {
     margin-top: 21px;
 }
+
 .clearButton {
-    width: 484px;
+    width: 100%;
+    max-width: 484px; /* Ограничиваем максимальную ширину */
     height: 58px;
     font-size: 32px;
     color: #FFFFFF;
     background-color: #FF0000;
-    border: none;
     cursor: pointer;
     border-radius: 25px;
+    margin-top: 20px; /* Небольшой отступ сверху */
 }
+
+/* --- АДАПТИВНОСТЬ --- */
 
 @media (max-width: 1199px) {
     body {
@@ -152,105 +164,84 @@ ol {
         line-height: 34px;
     }
 
-  /* Главная сетка: делаем 2 колонки для основных блоков */
-   .expenses {
+    .expenses {
         flex-direction: column;
         column-gap: 15px;
         row-gap: 20px;
     }
 
-  /* Расставляем элементы по колонкам через order и ширину */
-  
- .expensesInput,
-  .categorySelect,
-  .stats,
-  .addButton,
-  .clearButton {
-        width: 1000px;
-        max-width: none;
+    /* На планшетах блоки становятся на всю ширину */
+    .expensesInput,
+    .stats {
+        width: 100%;
+        flex: none; /* Отключаем растягивание */
+        min-width: auto;
     }
 
     .categorySelect {
-        margin-top: 15px;       /* чуть меньше отступ на планшете */
-  
+        margin-top: 15px;
     }
 
-  /* Статистика (справа) */
-    .stats {
-        width: 1000px;
- 
-    }
-
-  /* История и кнопка сброса — под ними, на всю ширину */
-    .history,
+    .addButton,
     .clearButton {
-        width: 1000px;
+        padding: 10px 20px;
     }
 
-  .addButton {
+    .clearButton {
+        height: 54px;
+        font-size: 18px;
+    }
 
-    padding: 0 20px;
-  }
-
-  .clearButton {
-    height: 54px;
-    font-size: 18px;
-  }
-
-  /* Центрируем статусы, чтобы смотрелось аккуратнее в узкой колонке */
-  .stats__limit,
-  .stats__total,
-  .stats__status {
-    text-align: center;       
-  }
+    .stats__limit,
+    .stats__total,
+    .stats__status {
+        text-align: center;
+    }
 }
 
-
 @media (max-width: 450px) {
-  body {
-
-     padding: 10px;
+    body {
+        padding: 10px;
     }
 
     .main {
-       width: 100%;
+        width: 100%;
+        max-width: 100%;
     }
 
-  h1 {
+    h1 {
         font-size: 24px;
         line-height: 30px;
     }
 
-  /* На мобильном .expenses будет в одну колонку */
-  .expenses {
+    .expenses {
         flex-direction: column;
         column-gap: 15px;
         row-gap: 20px;
     }
 
-  /* Поля и кнопки на всю доступную ширину */
-  .expensesInput,
-  .categorySelect,
-  .stats,
-  .addButton,
-  .clearButton {
-        width: 400px;
-        max-width: none;
+    /* На мобильных убираем жесткие размеры, оставляем только max-width */
+    .expensesInput,
+    .stats {
+        width: 100%;
+        min-width: auto;
     }
 
-  .moneyInput {
+    .moneyInput {
         padding: 8px 12px;
     }
 
-  .addButton,
-  .clearButton {
+    .addButton,
+    .clearButton {
         height: 50px;
         font-size: 16px;
+        padding: 10px 20px;
     }
 
-  .stats__limit,
-  .stats__total,
-  .stats__status {
-        text-align: center;      /* на мобильном удобно центрировать статусы */
+    .stats__limit,
+    .stats__total,
+    .stats__status {
+        text-align: center;
     }
 }
+
