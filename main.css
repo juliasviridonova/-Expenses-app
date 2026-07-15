@@ -137,7 +137,7 @@ ol {
     cursor: pointer;
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (max-width: 1199px) {
     body {
         padding: 20px;
     }
@@ -201,9 +201,14 @@ ol {
 }
 
 
-@media (max-width: 767px) {
+@media (max-width: 450px) {
   body {
+
      padding: 10px;
+    }
+
+    .main {
+       width: 100%;
     }
 
   h1 {
